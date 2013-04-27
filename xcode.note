@@ -1,0 +1,12 @@
+
+- (IBAction) wiggle {
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.14];
+	[UIView setAnimationRepeatAutoreverses:YES];
+	[UIView setAnimationRepeatCount: 9999999];
+	
+	myImage.transform = [CGAffineTransformMakeRotation(69)];
+	myImage.transform = [CGAffineTransformMakeRotation(-69)];
+	
+	[UIView commitAnimations];
+}
