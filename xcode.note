@@ -1,12 +1,20 @@
+#define DEGREES_TO_RADIANS(x) (M_PI * x / 180.0)
 
 - (IBAction) wiggle {
 	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:0.14];
+	[UIView setAnimationDuration:0.1];
 	[UIView setAnimationRepeatAutoreverses:YES];
 	[UIView setAnimationRepeatCount: 9999999];
 	
-	myImage.transform = [CGAffineTransformMakeRotation(69)];
-	myImage.transform = [CGAffineTransformMakeRotation(-69)];
+	myImage.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(20));	//radian
+	myImage.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(-20));
 	
 	[UIView commitAnimations];
+}
+
+- (IBAction) stop {
+	myImage.transform = CGAffineTransformMakeRotation(0);
+    
+    //[myImage.layer removeAllAnimations];
+    //import QuartzCore/QuartzCore.h to remove? a compiler warning ;)
 }
