@@ -1,0 +1,65 @@
+NSArray
+	NSString *objs[3] = {@"One", @"Two", @"Three"};
+	NSArray *arrayOne = [NSArray arrayWithObjects:objs count:3];
+	NSArray *arrayTwo = [[NSArray alloc] initWithObjects:@"One", @"Two", @"Three", nil];
+	NSArray *myArray = @[ @"Hello World", @67, [NSDate date] ]
+	
+	NSString *theString = [arrayTwo objectAtIndex:1];
+	id theObject = myArray[1];
+	
+	NSArray *myArray = // get array
+	for (NSString *cityName in myArray) {
+		if ([cityName isEqualToString:@"Cupertino"]) {
+			NSLog(@"We're near the mothership!");
+			break;
+		}
+	}
+	
+	addObject:
+	insertObject:atIndex:
+	removeObject:
+	removeObjectAtIndex: 
+	
+NSMutableArray
+	NSMutableArray *myMutableArray = [NSMutableArray arrayWithCapacity:1];
+	
+	
+NSDictionary
+	NSDictionary *dictionaryOne = [NSDictionary dictionaryWithObjects:valueArray forKeys:keyArray];
+	
+	NSDictionary *dictionaryTwo = [[NSDictionary alloc] initWithObjectsAndKeys:[NSDate date], @"IssueDate", @"Numerology Today", @"IssueName", self.currentIssueIcon, @"IssueIcon", nil];
+	
+	NSDictionary *myDictionary = @{
+		@"name" :NSUserName(),
+		@"date" :[NSDate date],
+		@"processInfo" :[NSProcessInfo processInfo]
+	};
+
+
+\/	version number	\/
+buildNumber=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "$INFOPLIST_FILE")
+buildNumber=$(($buildNumber + 1))
+/usr/libexec/PlistBuddy -c "Set :CFBundleVersion $buildNumber" "$INFOPLIST_FILE"
+
+
+\/shaking image\/
+#define DEGREES_TO_RADIANS(x) (M_PI * x / 180.0)
+
+- (IBAction) wiggle {
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.1];
+	[UIView setAnimationRepeatAutoreverses:YES];
+	[UIView setAnimationRepeatCount: 9999999];
+	
+	myImage.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(20));	//radian
+	myImage.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(-20));
+	
+	[UIView commitAnimations];
+}
+
+- (IBAction) stop {
+	myImage.transform = CGAffineTransformMakeRotation(0);
+    
+    //[myImage.layer removeAllAnimations];
+    //import QuartzCore/QuartzCore.h to remove? a compiler warning ;)
+}
