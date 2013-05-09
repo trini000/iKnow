@@ -35,6 +35,13 @@ NSDictionary
 		@"processInfo" :[NSProcessInfo processInfo]
 	};
 
+\/lock screen\/
+if (![self.window.rootViewController isKindOfClass:[BirdMasterViewController class]]) {
+	TopViewController *vc = [[TopViewController alloc] initWithNibName:@"TopViewController" bundle:nil];
+	vc.modalPresentationStyle = UIModalPresentationFullScreen;
+	vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+	[self.window.rootViewController presentViewController:vc animated:NO completion:nil];
+}
 
 \/	version number	\/
 buildNumber=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "$INFOPLIST_FILE")
