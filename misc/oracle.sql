@@ -1,3 +1,9 @@
+
+1008	not all variables bound
+1400 	cannot insert NULL
+1722	INVALID_NUMBER
+
+
 DECLARE
 productFound NUMBER;
 bFound BOOLEAN;
