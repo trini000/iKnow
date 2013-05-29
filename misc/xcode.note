@@ -1,3 +1,108 @@
+\/ save array to file\/
+//Creating a file path under iOS:
+//1) Search for the app's documents directory (copy+paste from Documentation)
+NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+NSString *documentsDirectory = [paths objectAtIndex:0];
+//2) Create the full file path by appending the desired file name
+NSString *yourArrayFileName = [documentsDirectory stringByAppendingPathComponent:@"example.dat"];
+
+//Load the array
+NSMutableArray *yourArray = [[NSMutableArray alloc] initWithContentsOfFile: yourArrayFileName];
+if(yourArray == nil)
+{
+    //Array file didn't exist... create a new one
+    yourArray = [[NSMutableArray alloc] initWithCapacity:10];
+
+    //Fill with default values
+}
+...
+//Use the content
+...
+//Save the array
+[yourArray writeToFile:yourArrayFileName atomically:YES];
+
+
+
+NSString *stringURL = @"http://www.somewhere.com/thefile.png";
+NSURL  *url = [NSURL URLWithString:stringURL];
+NSData *urlData = [NSData dataWithContentsOfURL:url];
+if ( urlData )
+{
+  NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  NSString  *documentsDirectory = [paths objectAtIndex:0];  
+
+  NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"filename.png"];
+  [urlData writeToFile:filePath atomically:YES];
+}
+
+UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
+[button setImage:[UIImage imageNamed:@"myImage.png"] forState:UIControlStateNormal];
+[button addTarget:self action:@selector(blah) forControlEvents:UIControlEventTouchUpInside];
+[button setFrame:CGRectMake(0, 0, 32, 32)];
+self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+
+
+NSArray
+	NSString *objs[3] = {@"One", @"Two", @"Three"};
+	NSArray *arrayOne = [NSArray arrayWithObjects:objs count:3];
+	NSArray *arrayTwo = [[NSArray alloc] initWithObjects:@"One", @"Two", @"Three", nil];
+	NSArray *myArray = @[ @"Hello World", @67, [NSDate date] ]
+	
+	NSString *theString = [arrayTwo objectAtIndex:1];
+	id theObject = myArray[1];
+	
+	NSArray *myArray = // get array
+	for (NSString *cityName in myArray) {
+		if ([cityName isEqualToString:@"Cupertino"]) {
+			NSLog(@"We're near the mothership!");
+			break;
+		}
+	}
+	
+	addObject:
+	insertObject:atIndex:
+	removeObject:
+	removeObjectAtIndex: 
+	
+NSMutableArray
+	NSMutableArray *myMutableArray = [NSMutableArray arrayWithCapacity:1];
+	
+	
+NSDictionary
+	NSDictionary *dictionaryOne = [NSDictionary dictionaryWithObjects:valueArray forKeys:keyArray];
+	
+	NSDictionary *dictionaryTwo = [[NSDictionary alloc] initWithObjectsAndKeys:[NSDate date], @"IssueDate", @"Numerology Today", @"IssueName", self.currentIssueIcon, @"IssueIcon", nil];
+	
+	NSDictionary *myDictionary = @{
+		@"name" :NSUserName(),
+		@"date" :[NSDate date],
+		@"processInfo" :[NSProcessInfo processInfo]
+	};
+
+
+\/save to file\/
+--get a file
+-(NSString*) saveFilePath{
+	NSString* path = [NSString stringWithFormat:@"%@%@",
+					  [[NSBundle mainBundle] resourcePath],
+					  @"myfilename.plist"];
+	return path;
+}
+
+--save
+NSMutableArray* myArray = [[NSMutableArray alloc]init];
+int i = 0;
+while(i < labelArray.count){
+   [myArray addObject: [labelArray objectAtIndex: i].text];
+   i ++;
+}
+[myArray writeToFile:[self saveFilePath] atomically:YES];
+[myArray release];
+
+
+--read
+NSMutableArray* myArray = [[NSMutableArray arrayWithContentsOfFile:[self saveFilePath]]retain];
+
 \/Add delete button as a footerview\/
 - (void)viewDidLoad
 {

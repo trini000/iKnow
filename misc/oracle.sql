@@ -1,5 +1,6 @@
 
 1008	not all variables bound
+1013	user requested cancel of current operation
 1400 	cannot insert NULL
 1722	INVALID_NUMBER
 
