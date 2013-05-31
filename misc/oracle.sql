@@ -4,6 +4,7 @@
 1400 	cannot insert NULL
 1722	INVALID_NUMBER
 
+select sys_extract_utc(systimestamp(0)) from dual
 
 DECLARE
 productFound NUMBER;
