@@ -1,3 +1,27 @@
+\/ autoscroll \/
+// disable bounces
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	theTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(freakingScroll) userInfo:nil repeats:YES];
+}
+
+-(void)freakingScroll
+{
+    CGFloat currentOffset = self.tableView.contentOffset.y;
+    
+    if(currentOffset >= self.tableView.contentSize.height)
+    {
+        [self.tableView setContentOffset:CGPointMake(0.0, -368.0) animated:NO];
+        return;
+    }
+    
+	[UIScrollView beginAnimations:nil context:NULL];
+	[UIScrollView setAnimationDuration:0.05];
+	[self.tableView setContentOffset:CGPointMake(0.0, currentOffset + 5) animated:YES];
+	[UIScrollView commitAnimations];
+}
+
 \/ add activity indicator \/
 UIView *loading = [[UIView alloc] initWithFrame:CGRectMake(100, 200, 120, 120)]; 
 
